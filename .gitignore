@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Runtime uploads and generated vector indexes
+backend/faiss_index/
+backend/temp_*
+faiss_index/
+temp_*
+
+# Frontend
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+

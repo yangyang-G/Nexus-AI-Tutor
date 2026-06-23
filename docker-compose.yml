@@ -1,0 +1,35 @@
+services:
+  backend:
+    build: ./backend
+    container_name: nexus-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
+    networks:
+      - nexus-network
+
+  frontend:
+    build: ./frontend
+    container_name: nexus-frontend
+    ports:
+      - "3000:80"
+    networks:
+      - nexus-network
+
+  nginx:
+    build: ./nginx
+    container_name: nexus-nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - nexus-network
+
+networks:
+  nexus-network:
+    driver: bridge
